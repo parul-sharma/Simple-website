@@ -118,6 +118,37 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* Footer layout + icons (shared) */
+.footer-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.footer-social a {
+  color: var(--text);
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.footer-social a:hover { opacity: 1; }
+
+.back-to-top {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-to-top:hover { text-decoration: underline; }
+
 /* Shared sidebar styles for all pages */
 .sidebar {
   position: fixed;
