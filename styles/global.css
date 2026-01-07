@@ -248,7 +248,7 @@ footer {
   gap: 1rem;
   margin-bottom: 2rem;
   padding-left: 2rem; /* space for timeline line and dots */
-  border-left: 2px solid var(--accent);
+  border-left: 3px solid var(--accent);
 }
 
 .timeline .card,
@@ -259,7 +259,7 @@ footer {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--border);
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 }
 
 .timeline .card::before,
@@ -267,14 +267,13 @@ footer {
 .time-line-container .timeline-item::before {
   content: "";
   position: absolute;
-  left: -2.5rem; /* align with left border */
+  left: -1.6rem; /* position dot on the line */
   top: 1.5rem;
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border: 2px solid var(--card-bg);
+  width: 14px;
+  height: 14px;
+  background: var(--card-bg);
+  border: 3px solid var(--accent);
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--accent);
 }
 
 @media (max-width: 640px) {
