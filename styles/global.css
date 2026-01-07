@@ -152,6 +152,78 @@ footer {
 .year-section { margin-top: 1rem; }
 .year-section h3 { margin: 0.5rem 0 0.75rem; }
 
+/* Publication card styling */
+.publication-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.publication-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.dark .publication-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.publication-card h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.publication-card p {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+  color: var(--muted);
+}
+
+.publication-card p i {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.publication-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.publication-card a:hover {
+  text-decoration: underline;
+}
+
+.publication-year-header {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.5rem 0 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+}
+
 /* Theme toggle button (shared) */
 .theme-toggle {
   position: fixed;
