@@ -17,6 +17,17 @@ body.dark {
   --border: #27272a;
 }
 
+/* Pleasant alternate color themes */
+body.theme-teal {
+  /* soft, calming teal background */
+  --bg: #e6faf7; /* teal tint */
+}
+
+body.theme-grey {
+  /* gentle light grey background */
+  --bg: #f3f4f6; /* grey tint */
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   margin: 0;

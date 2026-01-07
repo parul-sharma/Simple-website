@@ -643,6 +643,9 @@
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <i class="fas fa-moon" id="themeIcon"></i>
     </button>
+    <button class="theme-toggle" style="right: 4.2rem;" onclick="cycleColorTheme()" aria-label="Cycle color theme">
+        <i class="fas fa-palette"></i>
+    </button>
 
     <!-- Fixed sidebar for navigation/profile -->
     <aside class="sidebar" aria-label="Sidebar">
@@ -916,6 +919,9 @@
             const icon = document.getElementById('themeIcon');
             const isDark = document.body.classList.contains('dark');
             icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            if (isDark) {
+                document.body.classList.remove('theme-teal', 'theme-grey');
+            }
         }
 
         if (window.innerWidth > 768 && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -948,6 +954,24 @@
         const currentDate = new Date();
         const monthYear = `${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
         lastUpdatedElement.textContent = `Last updated: ${monthYear}`;
+
+        // Cycle between pleasant teal and grey background themes in light mode
+        function cycleColorTheme() {
+            // ensure we are in light mode
+            document.body.classList.remove('dark');
+            const icon = document.getElementById('themeIcon');
+            if (icon) icon.className = 'fas fa-moon';
+            const b = document.body;
+            if (!b.classList.contains('theme-teal') && !b.classList.contains('theme-grey')) {
+                b.classList.add('theme-teal');
+            } else if (b.classList.contains('theme-teal')) {
+                b.classList.remove('theme-teal');
+                b.classList.add('theme-grey');
+            } else {
+                b.classList.remove('theme-grey');
+                b.classList.add('theme-teal');
+            }
+        }
     </script>
 </body>
 </html>
