@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="styles/global.css">
 </head>
 <body>
-  <header>
+  <header class="site-header">
     <h1 class="text-5xl font-bold">Parul Sharma ⚡️</h1>
-    <div class="text-3xl py-3 font-bold" style="color: darkgray;">Bioinformatics Scientist</div>
+    <div class="text-3xl py-3 font-bold muted">Bioinformatics Scientist</div>
     <nav>
       <a href="index.html">Home</a> |
       <a href="research.html">Research</a> |
@@ -18,13 +18,26 @@
       <a href="mailto:contact.parul.sharma2@emory.edu">Contact</a>
     </nav>
   </header>
+  <aside class="sidebar" aria-label="Sidebar">
+    <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
+    <div class="name">Parul Sharma</div>
+    <div class="role">Bioinformatics Scientist</div>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a href="cv.html">CV</a>
+      <a href="publications.html">Publications</a>
+      <a href="research.html">Research</a>
+      <a href="mailto:parul.sharma2@emory.edu">Contact</a>
+    </nav>
+  </aside>
+  <div class="container with-sidebar">
   <main>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5">Profile</h2>
+    <section class="section">
+      <h2 class="section-title">Profile</h2>
       <p class="mb-10 text-justify">I am dedicated to advancing the field of bioinformatics through innovative research and data analysis. This involves working on various research projects, developing new computational methods, and collaborating with other scientists. My work aims to uncover new insights in biology and contribute to the scientific community.</p>
     </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5">Education</h2>
+    <section class="section">
+      <h2 class="section-title">Education</h2>
       <div class="timeline">
         <div class="card">
           <h3>PhD in Bioinformatics</h3>
@@ -40,8 +53,8 @@
         </div>
       </div>
     </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5">Experience</h2>
+    <section class="section">
+      <h2 class="section-title">Experience</h2>
       <div class="timeline">
         <div class="card">
           <h3>Assistant Bioinformatics Scientist</h3>
@@ -75,36 +88,10 @@
         </div>
       </div>
     </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5">Certifications</h2>
-      <ul class="list-disc mx-6 mb-10 grid gap-2">
-        <li><a href="#" target="_blank">Certification Name (with link)</a></li>
-        <li><a href="#" target="_blank">Certification Name (with link)</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5">Skills</h2>
-      <ul class="list-disc columns-2 mx-6">
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-        <li>Skill Name</li>
-      </ul>
-    </section>
   </main>
+  </div>
   <footer>
-    <p>&copy; 2025 Parul Sharma &middot; Template inspired by Manuel Ernesto</p>
+    <p>&copy; 2025 Parul Sharma</p>
   </footer>
 </body>
 </html>
