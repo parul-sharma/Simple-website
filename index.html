@@ -640,10 +640,7 @@
     </style>
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-        <i class="fas fa-moon" id="themeIcon"></i>
-    </button>
-    <button class="theme-toggle" style="right: 4.2rem;" onclick="cycleColorTheme()" aria-label="Cycle color theme">
+    <button class="theme-toggle" onclick="cycleColorTheme()" aria-label="Cycle color theme">
         <i class="fas fa-palette"></i>
     </button>
 
@@ -914,19 +911,25 @@
     </footer>
 
     <script>
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            const icon = document.getElementById('themeIcon');
-            const isDark = document.body.classList.contains('dark');
-            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-            if (isDark) {
-                document.body.classList.remove('theme-teal', 'theme-grey');
+        // Single toggle: cycles teal ↔ grey ↔ default light
+        function cycleColorTheme() {
+            const b = document.body;
+            // always use light when cycling
+            b.classList.remove('dark');
+            if (!b.classList.contains('theme-teal') && !b.classList.contains('theme-grey')) {
+                b.classList.add('theme-teal');
+            } else if (b.classList.contains('theme-teal')) {
+                b.classList.remove('theme-teal');
+                b.classList.add('theme-grey');
+            } else {
+                b.classList.remove('theme-grey');
             }
         }
 
-        if (window.innerWidth > 768 && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            toggleTheme();
-        }
+        // Respect OS dark if desired: comment out to stay light only
+        // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        //   document.body.classList.add('dark');
+        // }
 
         // Sticky header scroll effect - ONLY for desktop
         const header = document.querySelector('.header');
