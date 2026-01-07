@@ -175,21 +175,25 @@ footer {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--border);
+  border: 3px solid var(--border-light);
+  margin-bottom: 0.5rem;
 }
+body.dark .sidebar .profile-image { border-color: var(--border-dark); }
 
-.sidebar .name { font-size: 1.35rem; font-weight: 700; }
-.sidebar .role { color: var(--muted); font-size: 0.95rem; margin-top: -0.25rem; }
+.sidebar .name { font-size: 1.4rem; font-weight: 700; }
+.sidebar .role { color: var(--secondary-light); font-size: 0.95rem; margin-top: -0.25rem; }
+body.dark .sidebar .role { color: var(--secondary-dark); }
 
 .sidebar-nav { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; }
 .sidebar-nav a {
-  color: var(--accent);
+  color: var(--accent-light);
   text-decoration: none;
   font-weight: 600;
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
   display: block;
 }
+body.dark .sidebar-nav a { color: var(--accent-dark); }
 .sidebar-nav a:hover {
   background: rgba(44, 95, 141, 0.08);
 }
