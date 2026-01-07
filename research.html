@@ -6,6 +6,8 @@
   <title>Parul Sharma | Research</title>
   <link rel="stylesheet" href="styles/global.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="scripts/sidebar.js" defer></script>
+  <script src="scripts/theme.js" defer></script>
 </head>
 <body>
   <button class="theme-toggle" onclick="cycleColorTheme()" aria-label="Cycle color theme">
@@ -22,25 +24,7 @@
       <a href="mailto:contact.parul.sharma2@emory.edu">Contact</a>
     </nav>
   </header>
-  <aside class="sidebar" aria-label="Sidebar">
-    <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
-    <div class="name">Parul Sharma</div>
-    <div class="role">Bioinformatics Scientist at <a href="https://read-lab-confederation.github.io/">Emergent Lab</a> | <a href="https://med.emory.edu/">Emory University</a></div>
-    <nav class="sidebar-nav">
-      <a href="index.html">Home</a>
-      <a href="cv.html">CV</a>
-      <a href="publications.html">Publications</a>
-      <a href="research.html" aria-current="page">Research</a>
-      <a href="mailto:parul.sharma2@emory.edu">Contact</a>
-    </nav>
-    <div class="social-links">
-      <a href="https://scholar.google.co.in/citations?user=_dzInqYAAAAJ&hl=en" title="Google Scholar"><i class="fas fa-user-graduate"></i></a>
-      <a href="https://github.com/parul-sharma" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://x.com/parul142" title="Twitter"><i class="fab fa-x-twitter"></i></a>
-      <a href="https://www.linkedin.com/in/parul-sharma-77152672/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:parul.sharma2@emory.edu" title="Email"><i class="fas fa-envelope"></i></a>
-    </div>
-  </aside>
+  <div id="sidebar-root"></div>
   <div class="container with-sidebar">
   <main>
     <section>
@@ -71,29 +55,6 @@
       <a href="#" class="back-to-top" onclick="scrollToTop(event)">Back to top ↑</a>
     </div>
   </footer>
-  <script>
-    function cycleColorTheme() {
-      const body = document.body;
-      body.classList.remove('dark');
-      if (body.classList.contains('theme-teal')) {
-        body.classList.remove('theme-teal');
-        body.classList.add('theme-grey');
-      } else {
-        body.classList.remove('theme-grey');
-        body.classList.add('theme-teal');
-      }
-    }
-    // Initialize with teal theme on load
-    window.addEventListener('DOMContentLoaded', function() {
-      if (!document.body.classList.contains('theme-teal') && !document.body.classList.contains('theme-grey')) {
-        document.body.classList.add('theme-teal');
-      }
-    });
-
-    function scrollToTop(event) {
-      event.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+  
 </body>
 </html>
