@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parul Sharma</title>
     <link rel="icon" href="icons-s.png">
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         * {
@@ -240,88 +241,7 @@
             transform: translateY(-2px);
         }
 
-        /* Fixed sidebar - desktop */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100vh;
-            width: 280px;
-            padding: 2rem 1.25rem;
-            background: var(--bg-light);
-            border-right: 1px solid var(--border-light);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        body.dark .sidebar {
-            background: var(--bg-dark);
-            border-right-color: var(--border-dark);
-        }
-
-        .sidebar .profile-image {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar .name {
-            font-size: 1.4rem;
-            font-weight: 700;
-        }
-
-        .sidebar .role {
-            color: var(--secondary-light);
-            font-size: 0.95rem;
-        }
-
-        body.dark .sidebar .role {
-            color: var(--secondary-dark);
-        }
-
-        .sidebar-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-        }
-
-        .sidebar-nav a {
-            color: var(--accent-light);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        body.dark .sidebar-nav a { color: var(--accent-dark); }
-
-        .sidebar .social-links {
-            margin-top: 0.75rem; /* icons just below Contact */
-            gap: 0.75rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border-light);
-        }
-
-        /* Layout shift for content when sidebar is present */
-        @media (min-width: 769px) {
-            .container {
-                margin-left: 330px; /* add a bit more space on the left */
-            }
-            /* Hide large header on desktop in favor of sidebar */
-            .header { display: none !important; }
-        }
-
-        /* Mobile: sidebar becomes a simple header block */
-        @media (max-width: 768px) {
-            .sidebar {
-                position: static;
-                height: auto;
-                width: auto;
-                border-right: none;
-                padding: 1rem 0;
-            }
-            .sidebar .social-links { margin-top: 0; }
-        }
+        /* Sidebar styles moved to shared stylesheet (styles/global.css) */
 
         /* Simple site navigation */
         .site-nav {
@@ -658,7 +578,7 @@
     <aside class="sidebar" aria-label="Sidebar">
         <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
         <div class="name">Parul Sharma</div>
-        <div class="role">Bioinformatics Scientist</div>
+        <div class="role">Bioinformatics Scientist at <a href="https://read-lab-confederation.github.io/">Emergent Lab</a> | <a href="https://med.emory.edu/">Emory University</a></div>
         <nav class="sidebar-nav">
             <a href="index.html">Home</a>
             <a href="cv.html">CV</a>
@@ -685,41 +605,25 @@
         </div>
     </aside>
 
-    <div class="container">
+    <div class="container with-sidebar">
+        <!--
         <header class="header">
             <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
-            
             <div class="header-content">
                 <h1>Parul Sharma</h1>
                 <p class="subtitle">
                     Bioinformatics Scientist at <a href="https://read-lab-confederation.github.io/">Emergent Lab </a> | 
                     <a href="https://med.emory.edu/">Emory University</a>
                 </p>
-
                 <div class="social-links">
-                    <a href="assets/files/resume/shrey_gupta_curriculum_vitae_2025.pdf" title="Resume">
-                        <i class="fas fa-file"></i>
-                    </a>
-                    <a href="mailto:shrey.gupta@emory.edu" title="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://scholar.google.com/citations?user=BItXMD4AAAAJ&hl=en" title="Google Scholar">
-                        <i class="fas fa-user-graduate"></i>
-                    </a>
-                    <a href="https://github.com/shrey-gupta" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shrey-gupta-2a793aa9/" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://twitter.com/shrey_gupta_92" title="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="https://www.goodreads.com/user/show/165419786-shrey-gupta" title="Goodreads">
-                        <i class="fas fa-book"></i>
-                    </a>
+                    <a href="assets/files/resume/shrey_gupta_curriculum_vitae_2025.pdf" title="Resume"><i class="fas fa-file"></i></a>
+                    <a href="mailto:shrey.gupta@emory.edu" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://scholar.google.com/citations?user=BItXMD4AAAAJ&hl=en" title="Google Scholar"><i class="fas fa-user-graduate"></i></a>
+                    <a href="https://github.com/shrey-gupta" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shrey-gupta-2a793aa9/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/shrey_gupta_92" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.goodreads.com/user/show/165419786-shrey-gupta" title="Goodreads"><i class="fas fa-book"></i></a>
                 </div>
-
                 <nav class="site-nav" aria-label="Site">
                     <a href="cv.html">CV</a>
                     <a href="publications.html">Publications</a>
@@ -727,6 +631,7 @@
                 </nav>
             </div>
         </header>
+        -->
 
         <section class="bio" id="about">
             <h2>About</h2>
@@ -948,7 +853,7 @@
 
         // Sticky header scroll effect - ONLY for desktop
         const header = document.querySelector('.header');
-        if (window.innerWidth > 768) {
+        if (header && window.innerWidth > 768) {
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');

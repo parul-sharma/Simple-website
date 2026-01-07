@@ -6,10 +6,13 @@
   --bg-dark: #0a0a0a;
   --accent-light: #2c5f8d;
   --accent-dark: #6ba3d4;
+  --accent-hover: #3e78a3; /* lighter accent on hover (light mode) */
   --secondary-light: #6b7280;
   --secondary-dark: #9ca3af;
   --border-light: #e5e7eb;
   --border-dark: #27272a;
+  --sidebar-width: 280px;   /* single source of truth */
+  --sidebar-gap: 50px;      /* space between sidebar and content */
   
   /* Main color tokens (light mode defaults) */
   --bg: #f5f5f0;
@@ -28,6 +31,7 @@ body.dark {
   --bg-dark: #f5f5f0;
   --accent-light: #6ba3d4;
   --accent-dark: #2c5f8d;
+  --accent-hover: #8dbce3; /* lighter accent on hover (dark mode) */
   --secondary-light: #9ca3af;
   --secondary-dark: #6b7280;
   --border-light: #27272a;
@@ -101,7 +105,7 @@ nav a {
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: var(--accent-hover);
 }
 
 main {
@@ -155,7 +159,7 @@ footer {
   top: 0;
   left: 0;
   height: 100vh;
-  width: 280px;
+  width: var(--sidebar-width);
   padding: 2rem 1.25rem;
   background: var(--bg-light);
   border-right: 1px solid var(--border-light);
@@ -183,26 +187,29 @@ body.dark .sidebar .profile-image { border-color: var(--border-dark); }
 .sidebar .name { font-size: 1.4rem; font-weight: 700; }
 .sidebar .role { color: var(--secondary-light); font-size: 0.95rem; margin-top: -0.25rem; }
 body.dark .sidebar .role { color: var(--secondary-dark); }
+.sidebar .role a {
+  color: var(--accent-light);
+  text-decoration: none;
+}
+body.dark .sidebar .role a { color: var(--accent-dark); }
+.sidebar .role a:hover {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
 
-.sidebar-nav { display: flex; flex-direction: column; gap: 0.4rem; width: 100%; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 0.5rem; width: 100%; margin-top: 0.75rem; }
 .sidebar-nav a {
   color: var(--accent-light);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.4rem 0.6rem;
-  border-radius: 6px;
   display: block;
 }
 body.dark .sidebar-nav a { color: var(--accent-dark); }
 .sidebar-nav a:hover {
-  background: rgba(44, 95, 141, 0.08);
+  color: var(--accent-hover);
+  text-decoration: none;
+  opacity: 1; /* override any generic dimming */
 }
-body.dark .sidebar-nav a:hover { background: rgba(107, 163, 212, 0.12); }
-.sidebar-nav a[aria-current="page"] {
-  background: rgba(44, 95, 141, 0.12);
-  border: 1px solid var(--border-light);
-}
-body.dark .sidebar-nav a[aria-current="page"] { background: rgba(107, 163, 212, 0.18); }
 
 .sidebar .social-links {
   margin-top: 0.75rem; /* just below Contact */
@@ -215,14 +222,14 @@ body.dark .sidebar-nav a[aria-current="page"] { background: rgba(107, 163, 212, 
 .sidebar .social-links a {
   color: var(--text);
   opacity: 0.8;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .sidebar .social-links a:hover { opacity: 1; }
 
 /* Content shift when sidebar present */
 @media (min-width: 769px) {
-  .with-sidebar { margin-left: 330px; }
-  .site-header { display: none; }
+  .with-sidebar { margin-left: calc(var(--sidebar-width) + var(--sidebar-gap)); }
+  .site-header, .header { display: none; }
 }
 
 /* Mobile: sidebar becomes top block */
