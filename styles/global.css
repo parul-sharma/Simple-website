@@ -247,7 +247,7 @@ footer {
   display: grid;
   gap: 1rem;
   margin-bottom: 2rem;
-  padding-left: 2rem; /* space for timeline line and dots */
+  padding-left: 2.5rem; /* space for timeline line and dots */
   border-left: 3px solid var(--accent);
 }
 
@@ -259,7 +259,7 @@ footer {
   padding: 1rem;
   border-radius: 8px;
   border: 1px solid var(--border);
-  margin-left: 0.5rem;
+  margin-left: 0;
 }
 
 .timeline .card::before,
@@ -267,10 +267,10 @@ footer {
 .time-line-container .timeline-item::before {
   content: "";
   position: absolute;
-  left: -1.6rem; /* position dot on the line */
+  left: -2rem; /* position hollow dot centered on the line */
   top: 1.5rem;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   background: var(--card-bg);
   border: 3px solid var(--accent);
   border-radius: 50%;
