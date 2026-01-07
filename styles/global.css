@@ -224,6 +224,42 @@ body.dark .publication-card:hover {
   text-transform: uppercase;
 }
 
+/* Research card styling */
+.research-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.research-card:hover {
+  border-left-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+body.dark .research-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.research-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 0.75rem;
+  line-height: 1.5;
+}
+
+.research-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+
 /* Theme toggle button (shared) */
 .theme-toggle {
   position: fixed;
