@@ -232,6 +232,87 @@
             transform: translateY(-2px);
         }
 
+        /* Fixed sidebar - desktop */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            padding: 2rem 1.25rem;
+            background: var(--bg-light);
+            border-right: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        body.dark .sidebar {
+            background: var(--bg-dark);
+            border-right-color: var(--border-dark);
+        }
+
+        .sidebar .profile-image {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar .name {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .sidebar .role {
+            color: var(--secondary-light);
+            font-size: 0.95rem;
+        }
+
+        body.dark .sidebar .role {
+            color: var(--secondary-dark);
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .sidebar-nav a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        body.dark .sidebar-nav a { color: var(--accent-dark); }
+
+        .sidebar .social-links {
+            margin-top: auto;
+            gap: 0.75rem;
+        }
+
+        /* Layout shift for content when sidebar is present */
+        @media (min-width: 769px) {
+            .container {
+                margin-left: 300px;
+            }
+            /* Hide large header on desktop in favor of sidebar */
+            .header { display: none !important; }
+        }
+
+        /* Mobile: sidebar becomes a simple header block */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                height: auto;
+                width: auto;
+                border-right: none;
+                padding: 1rem 0;
+            }
+            .sidebar .social-links { margin-top: 0; }
+        }
+
         /* Simple site navigation */
         .site-nav {
             display: flex;
@@ -562,6 +643,37 @@
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <i class="fas fa-moon" id="themeIcon"></i>
     </button>
+
+    <!-- Fixed sidebar for navigation/profile -->
+    <aside class="sidebar" aria-label="Sidebar">
+        <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
+        <div class="name">Parul Sharma</div>
+        <div class="role">Bioinformatics Scientist</div>
+        <nav class="sidebar-nav">
+            <a href="index.html">Home</a>
+            <a href="cv.html">CV</a>
+            <a href="publications.html">Publications</a>
+            <a href="research.html">Research</a>
+            <a href="mailto:parul.sharma2@emory.edu">Contact</a>
+        </nav>
+        <div class="social-links">
+            <a href="https://scholar.google.co.in/citations?user=_dzInqYAAAAJ&hl=en" title="Google Scholar">
+                <i class="fas fa-user-graduate"></i>
+            </a>
+            <a href="https://github.com/parul-sharma" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://x.com/parul142" title="Twitter">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/parul-sharma-77152672/" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:parul.sharma2@emory.edu" title="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </aside>
 
     <div class="container">
         <header class="header">

@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parul Sharma | CV</title>
   <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
+  <button class="theme-toggle" onclick="(function(){document.body.classList.toggle('dark'); var i=document.getElementById('themeIcon'); var d=document.body.classList.contains('dark'); i.className = d ? 'fas fa-sun' : 'fas fa-moon';})()" aria-label="Toggle theme">
+    <i class="fas fa-moon" id="themeIcon"></i>
+  </button>
   <header class="site-header">
     <h1 class="text-5xl font-bold">Parul Sharma ⚡️</h1>
     <div class="text-3xl py-3 font-bold muted">Bioinformatics Scientist</div>
@@ -29,6 +33,13 @@
       <a href="research.html">Research</a>
       <a href="mailto:parul.sharma2@emory.edu">Contact</a>
     </nav>
+    <div class="social-links">
+      <a href="https://scholar.google.co.in/citations?user=_dzInqYAAAAJ&hl=en" title="Google Scholar"><i class="fas fa-user-graduate"></i></a>
+      <a href="https://github.com/parul-sharma" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://x.com/parul142" title="Twitter"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/parul-sharma-77152672/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:parul.sharma2@emory.edu" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
   </aside>
   <div class="container with-sidebar">
   <main>
@@ -93,5 +104,13 @@
   <footer>
     <p>&copy; 2025 Parul Sharma</p>
   </footer>
+  <script>
+    // Prefer dark if user OS prefers
+    if (window.innerWidth > 768 && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add('dark');
+      const icon = document.getElementById('themeIcon');
+      if (icon) icon.className = 'fas fa-sun';
+    }
+  </script>
 </body>
 </html>
