@@ -35,7 +35,12 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
+  font-weight: 400;
 }
+
+/* Enhanced typography for better readability */
+p { line-height: 1.8; letter-spacing: 0.3px; }
+h1, h2, h3, h4, h5, h6 { letter-spacing: -0.5px; line-height: 1.3; font-weight: 600; }
 
 .container {
   max-width: 900px;
@@ -126,7 +131,7 @@ footer {
 
 /* Content shift when sidebar present */
 @media (min-width: 769px) {
-  .with-sidebar { margin-left: 300px; }
+  .with-sidebar { margin-left: 330px; }
   .site-header { display: none; }
 }
 
@@ -218,16 +223,58 @@ footer {
   border-radius: 50%;
 }
 
-.timeline .card h3,
-.time-line-container .card h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1.1rem;
-}
-
 .timeline .card p,
 .time-line-container .card p {
-  margin: 0.25rem 0;
-  color: #555;
+  margin: 0.35rem 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Prettier timeline heading styles */
+.timeline .card h3,
+.time-line-container .card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Timeline with accent left border */
+.timeline,
+.time-line-container {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-left: 2rem; /* space for timeline line and dots */
+  border-left: 2px solid var(--accent);
+}
+
+.timeline .card,
+.time-line-container .card,
+.time-line-container .timeline-item {
+  position: relative;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  margin-left: 1rem;
+}
+
+.timeline .card::before,
+.time-line-container .card::before,
+.time-line-container .timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem; /* align with left border */
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border: 2px solid var(--card-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 @media (max-width: 640px) {
