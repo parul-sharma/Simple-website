@@ -39,6 +39,14 @@
             background: var(--bg-dark);
         }
 
+        body.theme-teal {
+            --bg-light: #f0f9f8;
+        }
+
+        body.theme-grey {
+            --bg-light: #f2f3f5;
+        }
+
         .theme-toggle {
             position: fixed;
             top: 2rem;
@@ -911,6 +919,13 @@
     </footer>
 
     <script>
+        // Initialize with teal theme on load
+        window.addEventListener('DOMContentLoaded', function() {
+            if (!document.body.classList.contains('theme-teal') && !document.body.classList.contains('theme-grey')) {
+                document.body.classList.add('theme-teal');
+            }
+        });
+
         // Toggle strictly between teal ↔ grey in light mode
         function cycleColorTheme() {
             const b = document.body;

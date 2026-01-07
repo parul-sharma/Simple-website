@@ -44,11 +44,11 @@ body.dark {
 
 /* Pleasant alternate color themes */
 body.theme-teal {
-  --bg: #e8f6f4;
-  --bg-light: #e8f6f4;
-  --card-bg: #ddeee9; /* Darker teal shade for cards */
-  --border: #c8e0d8;
-  --border-light: #c8e0d8;
+  --bg: #f0f9f8;
+  --bg-light: #f0f9f8;
+  --card-bg: #e5f2f0; /* Muted teal shade for cards */
+  --border: #d0e5e0;
+  --border-light: #d0e5e0;
 }
 
 body.theme-grey {
