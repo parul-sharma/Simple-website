@@ -79,10 +79,12 @@
         body.classList.add('theme-teal');
       }
     }
-    // Optional: Respect OS dark
-    // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    //   document.body.classList.add('dark');
-    // }
+    // Initialize with teal theme on load
+    window.addEventListener('DOMContentLoaded', function() {
+      if (!document.body.classList.contains('theme-teal') && !document.body.classList.contains('theme-grey')) {
+        document.body.classList.add('theme-teal');
+      }
+    });
   </script>
 </body>
 </html>
