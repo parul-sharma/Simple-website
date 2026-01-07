@@ -20,12 +20,12 @@ body.dark {
 /* Pleasant alternate color themes */
 body.theme-teal {
   /* soft, calming teal background */
-  --bg: #e6faf7; /* teal tint */
+  --bg: #e8f6f4; /* teal tint */
 }
 
 body.theme-grey {
   /* gentle light grey background */
-  --bg: #f3f4f6; /* grey tint */
+  --bg: #f2f3f5; /* grey tint */
 }
 
 body {
