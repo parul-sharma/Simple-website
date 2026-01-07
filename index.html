@@ -1,72 +1,823 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parul Sharma</title>
-  <link rel="stylesheet" href="styles/global.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parul Sharma</title>
+    <link rel="icon" href="icons-s.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text-light: #1a1a1a;
+            --text-dark: #e8e8e8;
+            --bg-light: #f5f5f0;
+            --bg-dark: #0a0a0a;
+            --accent-light: #2c5f8d;
+            --accent-dark: #6ba3d4;
+            --secondary-light: #6b7280;
+            --secondary-dark: #9ca3af;
+            --border-light: #e5e7eb;
+            --border-dark: #27272a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background: var(--bg-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark {
+            color: var(--text-dark);
+            background: var(--bg-dark);
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            z-index: 100;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        body.dark .theme-toggle {
+            color: var(--text-dark);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem 2rem 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 3rem 1.5rem 2rem 1.5rem;
+            }
+        }
+
+        /* Header - Desktop sticky behavior */
+        .header {
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 769px) {
+            .header {
+                position: sticky;
+                top: 0;
+                background: var(--bg-light);
+                z-index: 50;
+                padding: 2rem 0;
+                margin-top: -2rem;
+                border-bottom: 1px solid transparent;
+            }
+
+            body.dark .header {
+                background: var(--bg-dark);
+            }
+
+            .header.scrolled {
+                border-bottom-color: var(--border-light);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            body.dark .header.scrolled {
+                border-bottom-color: var(--border-dark);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        /* Mobile - NO sticky behavior */
+        @media (max-width: 768px) {
+            .header {
+                position: static !important;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 1rem;
+                padding: 0 !important;
+                margin-bottom: 2rem;
+                margin-top: 0 !important;
+                background: transparent !important;
+                border-bottom: none !important;
+                box-shadow: none !important;
+            }
+
+            .profile-image {
+                display: block;
+                width: 120px;
+                height: 120px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+                text-align: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .social-links a {
+                font-size: 1.2rem;
+            }
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .profile-image {
+            border-color: var(--border-dark);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-image:hover {
+            border-color: var(--accent-light);
+            box-shadow: 0 6px 20px rgba(44, 95, 141, 0.3);
+            transform: scale(1.02);
+        }
+
+        body.dark .profile-image:hover {
+            border-color: var(--accent-dark);
+            box-shadow: 0 6px 20px rgba(107, 163, 212, 0.3);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--secondary-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        body.dark .header .subtitle {
+            color: var(--secondary-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+        }
+
+        body.dark .social-links a {
+            color: var(--text-dark);
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .bio {
+            margin-bottom: 4rem;
+        }
+
+        .bio h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary-light);
+        }
+
+        body.dark .bio h2 {
+            color: var(--secondary-dark);
+        }
+
+        .bio p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        a {
+            color: var(--accent-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        body.dark a {
+            color: var(--accent-dark);
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        .bio a:hover,
+        .publication-links a:hover,
+        .news-content a:hover {
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        .contact-callout {
+            margin-top: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: rgba(44, 95, 141, 0.03);
+            border-left: 2px solid var(--accent-light);
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        body.dark .contact-callout {
+            background: rgba(107, 163, 212, 0.04);
+            border-left-color: var(--accent-dark);
+        }
+
+        .contact-callout a {
+            font-weight: 500;
+        }
+
+        .news-section {
+            margin-bottom: 4rem;
+        }
+
+        .news-section h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary-light);
+        }
+
+        body.dark .news-section h2 {
+            color: var(--secondary-dark);
+        }
+
+        .news-container {
+            height: 400px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        .news-list {
+            list-style: none;
+            animation: scrollNews 40s linear infinite;
+        }
+
+        .news-container:hover .news-list {
+            animation-play-state: paused;
+        }
+
+        .news-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .news-container::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        body.dark .news-container::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        .news-container::-webkit-scrollbar-thumb {
+            background: var(--border-light);
+            border-radius: 3px;
+        }
+
+        body.dark .news-container::-webkit-scrollbar-thumb {
+            background: var(--border-dark);
+        }
+
+        .news-container::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-light);
+        }
+
+        body.dark .news-container::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-dark);
+        }
+
+        @keyframes scrollNews {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .news-item {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.95rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .news-item {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+        }
+
+        body.dark .news-item {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-date {
+            color: var(--secondary-light);
+            font-weight: 500;
+            flex-shrink: 0;
+            min-width: 110px;
+        }
+
+        body.dark .news-date {
+            color: var(--secondary-dark);
+        }
+
+        .news-content {
+            flex: 1;
+        }
+
+        .publications h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--secondary-light);
+        }
+
+        body.dark .publications h2 {
+            color: var(--secondary-dark);
+        }
+
+        .publication {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+
+        body.dark .publication {
+            border-bottom-color: var(--border-dark);
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .publication-title {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 0.4rem;
+            color: var(--text-light);
+        }
+
+        body.dark .publication-title {
+            color: var(--text-dark);
+        }
+
+        .publication-title a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        body.dark .publication-title a {
+            color: var(--text-dark);
+        }
+
+        .publication-title a:hover {
+            color: var(--accent-light);
+        }
+
+        body.dark .publication-title a:hover {
+            color: var(--accent-dark);
+        }
+
+        .publication-authors {
+            color: var(--secondary-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.5;
+        }
+
+        body.dark .publication-authors {
+            color: var(--secondary-dark);
+        }
+
+        .publication-venue {
+            display: inline-block;
+            color: var(--accent-light);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            padding: 0.15rem 0.5rem;
+            background: rgba(44, 95, 141, 0.1);
+            border-radius: 4px;
+        }
+
+        body.dark .publication-venue {
+            color: var(--accent-dark);
+            background: rgba(107, 163, 212, 0.15);
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 0.75rem;
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .publication-links a {
+            color: var(--accent-light);
+        }
+
+        body.dark .publication-links a {
+            color: var(--accent-dark);
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+            text-align: center;
+            color: var(--secondary-light);
+            font-size: 0.9rem;
+        }
+
+        body.dark footer {
+            border-top-color: var(--border-dark);
+            color: var(--secondary-dark);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .back-to-top {
+            color: var(--accent-light);
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        body.dark .back-to-top {
+            color: var(--accent-dark);
+        }
+
+        .back-to-top:hover {
+            opacity: 0.7;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1 class="text-5xl font-bold">I'm Parul Sharma</h1>
-    <div class="text-3xl py-3 font-bold" style="color: darkgray;">Bioinformatics Scientist</div>
-    <nav>
-      <a href="index.html">Home</a> |
-      <a href="cv.html">CV</a> |
-      <a href="publications.html">Publications</a> |
-      <a href="research.html">Research</a>
-    </nav>
-  </header>
-  <main>
-    <section class="pb-12 mt-5">
-      <div class="text-xl py-1">Hi 👋</div>
-      <div class="py-2">
-        <span class="text-lg">
-          With a PhD in Bioinformatics, Masters in Computational Biology and Bachelors in Biotechnology, I have developed a deep understanding and expertise in analyzing complex biological data. 
-          Currently, I am working as an Assistant Bioinformatics Scientist at Emory University, where I focus on developing tools and pipelines for pathogen surveillance for various disease outbreaks.
-        </span>
-      </div>
-      <div class="mt-8">
-        <a class="btn" href="mailto:parul.sharma2@emory.edu" target="_blank"> Let's connect!</a>
-      </div>
-    </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-2">My last projects &lt;/&gt;</h2>
-      <div class="card">
-        <h3>CuCoders</h3>
-        <img src="https://cucoders.dev/assets/img/cucoders_social.webp" alt="CuCoders" style="max-width:200px;">
-        <p>Platform to enhance software development in Cuba and support developers and entrepreneurs in their professional career.</p>
-        <a href="https://cucoders.dev/" target="_blank">Visit Project</a>
-      </div>
-      <div class="card">
-        <h3>WeekTodo</h3>
-        <img src="https://weektodo.me/weektodo_social_img.webp" alt="WeekTodo" style="max-width:200px;">
-        <p>Free and Open Source Minimalist Weekly Planner and To Do list App for simple and effective people.</p>
-        <a href="https://weektodo.me/" target="_blank">Visit Project</a>
-      </div>
-      <div class="card">
-        <h3>Snapclear</h3>
-        <img src="https://softr-prod.imgix.net/applications/45f4f664-92a2-4e85-93f4-65f6e8c09a63/assets/7ca09075-9361-49eb-8a52-97974ed2a5cd.webp" alt="Snapclear" style="max-width:200px;">
-        <p>Remove Image Background Offline for Free with AI.</p>
-        <a href="https://www.snapclear.app/" target="_blank">Visit Project</a>
-      </div>
-    </section>
-    <section>
-      <h2 class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</h2>
-      <div class="card">
-        <h3>Sample Blog Post 1</h3>
-        <p>A short description of the blog post goes here.</p>
-        <a href="#">Read more</a>
-      </div>
-      <div class="card">
-        <h3>Sample Blog Post 2</h3>
-        <p>A short description of the blog post goes here.</p>
-        <a href="#">Read more</a>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>&copy; 2025 Parul Sharma</p>
-  </footer>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <img src="profile.jpg" alt="Parul Sharma" class="profile-image">
+            
+            <div class="header-content">
+                <h1>Parul Sharma</h1>
+                <p class="subtitle">
+                    Bioinformatics Scientist at <a href="https://read-lab-confederation.github.io/">Emergent Lab </a> | 
+                    <a href="https://med.emory.edu/">Emory University</a>
+                </p>
+
+                <div class="social-links">
+                    <a href="assets/files/resume/shrey_gupta_curriculum_vitae_2025.pdf" title="Resume">
+                        <i class="fas fa-file"></i>
+                    </a>
+                    <a href="mailto:shrey.gupta@emory.edu" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=BItXMD4AAAAJ&hl=en" title="Google Scholar">
+                        <i class="fas fa-user-graduate"></i>
+                    </a>
+                    <a href="https://github.com/shrey-gupta" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/shrey-gupta-2a793aa9/" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/shrey_gupta_92" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.goodreads.com/user/show/165419786-shrey-gupta" title="Goodreads">
+                        <i class="fas fa-book"></i>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section class="bio" id="about">
+            <h2>About</h2>
+            <p>I am an Assistant Bioinformatics Scientist at the  <b><a href="https://read-lab-confederation.github.io/" style="color: gray;">Emergent Lab</a></b> in Emory University, with 
+        <b><a href="https://med.emory.edu/directory/profile/?u=TREAD" style="color: gray;">Dr. Timothy Read</a></b>.
+        I completed my PhD in Bioinformatics from the <b><a href="https://sites.google.com/vt.edu/lab-vinatzer/home" style="color: gray;">Vinatzer Lab</a></b> 
+        at Virginia Tech, advised by <b><a href="https://spes.vt.edu/faculty-staff/faculty/vinatzer-boris.html" style="color: gray;">Dr. Boris Vinatzer</a></b>.
+        <br><br>
+        My research focuses on advancing methods for tracking disease outbreaks and study the spread of pathogens. 
+        Currently, I am applying my knowledge to study the spread of antimicrobial resistance in clinical pathogens.
+        During my PhD, I worked on pathogen identification using genomic and metagenomic sequencing data, for which
+        I received the Outstanding PhD Student Award by the <b><a href="https://spes.vt.edu/" style="color: gray;">School of Plant and Environmental Sciences (SPES)</a></b>. 
+            <div class="contact-callout">
+                If you're interested in my research, feel free to contact me at <a href="mailto:parul.sharma2@emory.edu">parul.sharma2@emory.edu</a>. I'm happy to connect and chat.
+            </div>
+        </section>
+
+        <section class="news-section" id="news">
+            <h2>News</h2>
+            <div class="news-container">
+                <ul class="news-list">
+                    <li class="news-item">
+                        <span class="news-date">[08/27/2025]</span>
+                        <span class="news-content">Honored to receive the travel grant from IEEE DSAA, 2025</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[08/05/2025]</span>
+                        <span class="news-content">Our work on application of variational Gaussian processes for low-sensor regions got accepted at DSAA, 2025</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[01/01/2025]</span>
+                        <span class="news-content">Started my postdoc at the Schiller Institute, Boston College</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[09/10/2024]</span>
+                        <span class="news-content">Presented poster for my dissertation at the PhD Forum @ECML-PKDD'24!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[05/27/2024]</span>
+                        <span class="news-content">Our work on estimating PM<sub>2.5</sub> using spatial transfer learning got accepted at ECML-PKDD'24!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[11/06/2023]</span>
+                        <span class="news-content">Successfully defended my PhD proposal!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[06/15/2023]</span>
+                        <span class="news-content">Our work on regression transfer learning got accepted at IJDSA journal!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[02/27/2023]</span>
+                        <span class="news-content">Our work on analyzing belief movement got accepted at EuroVis'23!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[11/01/2022]</span>
+                        <span class="news-content">Attended <a href="https://sigspatial2022.sigspatial.org/">ACM SIGSPATIAL 2022</a> conference in Seattle, WA, USA. Honored to receive the Travel Grant Award!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[10/28/2022]</span>
+                        <span class="news-content">Presented my work: "Sampled-Boosting Regression Transfer for Atmospheric Pollution Prediction" as a poster on <a href="https://www.stat.uga.edu/events/content/2021/georgia-statistics-day-2022">Georgia Statistics Day 2022</a></span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[08/27/2025]</span>
+                        <span class="news-content">Honored to receive the travel grant from IEEE DSAA, 2025</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[08/05/2025]</span>
+                        <span class="news-content">Our work on application of variational Gaussian processes for low-sensor regions got accepted at DSAA, 2025</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[01/01/2025]</span>
+                        <span class="news-content">Started my postdoc at the Schiller Institute, Boston College</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[09/10/2024]</span>
+                        <span class="news-content">Presented poster for my dissertation at the PhD Forum @ECML-PKDD'24!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[05/27/2024]</span>
+                        <span class="news-content">Our work on estimating PM<sub>2.5</sub> using spatial transfer learning got accepted at ECML-PKDD'24!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[11/06/2023]</span>
+                        <span class="news-content">Successfully defended my PhD proposal!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[06/15/2023]</span>
+                        <span class="news-content">Our work on regression transfer learning got accepted at IJDSA journal!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[02/27/2023]</span>
+                        <span class="news-content">Our work on analyzing belief movement got accepted at EuroVis'23!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[11/01/2022]</span>
+                        <span class="news-content">Attended <a href="https://sigspatial2022.sigspatial.org/">ACM SIGSPATIAL 2022</a> conference in Seattle, WA, USA. Honored to receive the Travel Grant Award!</span>
+                    </li>
+                    <li class="news-item">
+                        <span class="news-date">[10/28/2022]</span>
+                        <span class="news-content">Presented my work: "Sampled-Boosting Regression Transfer for Atmospheric Pollution Prediction" as a poster on <a href="https://www.stat.uga.edu/events/content/2021/georgia-statistics-day-2022">Georgia Statistics Day 2022</a></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="publications" id="publications">
+            <h2>Selected Publications</h2>
+
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-031-70378-2_24">Spatially Adaptive PM<sub>2.5</sub> Estimation in Low-sensor Regions using Variational Gaussian Processes</a>
+                </div>
+                <div class="publication-authors">
+                    <strong>Shrey Gupta</strong>, Avani Wildani, Yang Liu
+                </div>
+                <div class="publication-venue">DSAA 2025</div>
+                <div class="publication-links">
+                    <a href="assets/files/publications/svgps-2025/svgps_for_limited_sensors_final.pdf">PDF</a>
+                    <a href="assets/files/publications/svgps-2025/shrey-gupta-dsaa-presentation.pdf">Slides</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://link.springer.com/chapter/10.1007/978-3-031-70378-2_24">Spatial Transfer Learning for Estimating PM<sub>2.5</sub> in Data-poor Regions</a>
+                </div>
+                <div class="publication-authors">
+                    <strong>Shrey Gupta*</strong>, Yongbee Park*, Jianzhao Bi, Suyash Gupta, Andreas Züfle, Avani Wildani, Yang Liu
+                </div>
+                <div class="publication-venue">ECML-PKDD 2024</div>
+                <div class="publication-links">
+                    <a href="https://arxiv.org/pdf/2404.07308">PDF</a>
+                    <a href="https://github.com/YongbeeIngkle/spatial-transfer-learning">Code</a>
+                    <a href="assets/files/publications/spatial-transfer/ecml-pkdd-paper-slides.pdf">Slides</a>
+                    <a href="assets/files/publications/spatial-transfer/paper-poster-ecml-pkdd.pdf">Poster</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://doi.org/10.1111/cgf.14816">Belief Decay or Persistence? A Mixed-method Study on Belief Movement Over Time</a>
+                </div>
+                <div class="publication-authors">
+                    <strong>Shrey Gupta</strong>, Alireza Karduni, Emily Wall
+                </div>
+                <div class="publication-venue">EuroVis 2023</div>
+                <div class="publication-links">
+                    <a href="assets/files/publications/belief-persistence/belief-persistence-shrey.pdf">PDF</a>
+                    <a href="https://github.com/shrey-gupta/belief-persistence-evis23">Code</a>
+                    <a href="assets/files/publications/belief-persistence/eurovis-presentation.pdf">Slides</a>
+                    <a href="https://www.youtube.com/watch?v=fDGDFzQVHo8">Talk</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://link.springer.com/article/10.1007/s41060-023-00414-8">Boosting for Regression Transfer via Importance Sampling</a>
+                </div>
+                <div class="publication-authors">
+                    <strong>Shrey Gupta</strong>, Jianzhao Bi, Yang Liu, Avani Wildani
+                </div>
+                <div class="publication-venue">IJDSA 2023</div>
+                <div class="publication-links">
+                    <a href="assets/files/publications/stradaboost-r2/stradaboostr2-shrey.pdf">PDF</a>
+                    <a href="assets/files/publications/stradaboost-r2/ga-stat-day-shrey.pdf">Poster</a>
+                </div>
+            </div>
+
+            <div class="publication">
+                <div class="publication-title">
+                    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0244567">DALIA- A Comprehensive Resource of Disease Alleles in Arab Population</a>
+                </div>
+                <div class="publication-authors">
+                    Aastha Vatsyayan*, Parul Sharma*, <strong>Shrey Gupta</strong>, Sumiti Sandhu, Seetha Lakshmi Venu, Vandana Sharma, Bouabid Badaoui, Kaidi Azedine, Serti Youssef, Anna Rajab, Alaaeldin Fayez, Seema Madinur, Anop Ranawat, Kavita Pandhare, Srinivasan Ramachandran, Sridhar Sivasubbu, Vinod Scaria
+                </div>
+                <div class="publication-venue">PLOS ONE 2021</div>
+                <div class="publication-links">
+                    <a href="assets/files/publivations/dalia-parul.pdf">PDF</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <span>Copyright &copy; Shrey Gupta 2025</span>
+            <span>•</span>
+            <span id="lastUpdated">Last updated: October 2025</span>
+            <span>•</span>
+            <a href="#" class="back-to-top" onclick="scrollToTop(event)">Back to top ↑</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            const icon = document.getElementById('themeIcon');
+            const isDark = document.body.classList.contains('dark');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        if (window.innerWidth > 768 && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleTheme();
+        }
+
+        // Sticky header scroll effect - ONLY for desktop
+        const header = document.querySelector('.header');
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        }
+
+        function scrollToTop(event) {
+            event.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        const lastUpdatedElement = document.getElementById('lastUpdated');
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+        const currentDate = new Date();
+        const monthYear = `${months[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+        lastUpdatedElement.textContent = `Last updated: ${monthYear}`;
+    </script>
 </body>
 </html>
