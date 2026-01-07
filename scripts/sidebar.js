@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="index.html">Home</a>
     <a href="cv.html">CV</a>
     <a href="publications.html">Publications</a>
+    <!-- Research temporarily hidden
     <a href="research.html">Research</a>
+    -->
     <a href="mailto:parul.sharma2@emory.edu">Contact</a>
   </nav>
   <div class="social-links">
