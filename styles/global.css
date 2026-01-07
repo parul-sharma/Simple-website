@@ -46,11 +46,15 @@ body.dark {
 body.theme-teal {
   --bg: #e8f6f4;
   --bg-light: #e8f6f4;
+  --card-bg: #ddeee9; /* Darker teal shade for cards */
+  --border: #c8e0d8;
 }
 
 body.theme-grey {
   --bg: #f2f3f5;
   --bg-light: #f2f3f5;
+  --card-bg: #e6e7eb; /* Darker grey shade for cards */
+  --border: #d5d6df;
 }
 
 body {
