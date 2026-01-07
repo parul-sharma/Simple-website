@@ -296,14 +296,16 @@
         body.dark .sidebar-nav a { color: var(--accent-dark); }
 
         .sidebar .social-links {
-            margin-top: auto;
+            margin-top: 0.75rem; /* icons just below Contact */
             gap: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border-light);
         }
 
         /* Layout shift for content when sidebar is present */
         @media (min-width: 769px) {
             .container {
-                margin-left: 300px;
+                margin-left: 330px; /* add a bit more space on the left */
             }
             /* Hide large header on desktop in favor of sidebar */
             .header { display: none !important; }
