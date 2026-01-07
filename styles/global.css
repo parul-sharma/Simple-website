@@ -1,5 +1,18 @@
 :root {
-  --bg: #fafafa;
+  /* Light mode - warm, professional palette */
+  --text-light: #1a1a1a;
+  --text-dark: #e8e8e8;
+  --bg-light: #f5f5f0;
+  --bg-dark: #0a0a0a;
+  --accent-light: #2c5f8d;
+  --accent-dark: #6ba3d4;
+  --secondary-light: #6b7280;
+  --secondary-dark: #9ca3af;
+  --border-light: #e5e7eb;
+  --border-dark: #27272a;
+  
+  /* Main color tokens (light mode defaults) */
+  --bg: #f5f5f0;
   --text: #1a1a1a;
   --muted: #6b7280;
   --accent: #2c5f8d;
@@ -9,6 +22,18 @@
 
 /* Dark mode token overrides */
 body.dark {
+  --text-light: #e8e8e8;
+  --text-dark: #1a1a1a;
+  --bg-light: #0a0a0a;
+  --bg-dark: #f5f5f0;
+  --accent-light: #6ba3d4;
+  --accent-dark: #2c5f8d;
+  --secondary-light: #9ca3af;
+  --secondary-dark: #6b7280;
+  --border-light: #27272a;
+  --border-dark: #e5e7eb;
+  
+  /* Main color tokens (dark mode) */
   --bg: #0a0a0a;
   --text: #e8e8e8;
   --muted: #9ca3af;
@@ -19,13 +44,13 @@ body.dark {
 
 /* Pleasant alternate color themes */
 body.theme-teal {
-  /* soft, calming teal background */
-  --bg: #e8f6f4; /* teal tint */
+  --bg: #e8f6f4;
+  --bg-light: #e8f6f4;
 }
 
 body.theme-grey {
-  /* gentle light grey background */
-  --bg: #f2f3f5; /* grey tint */
+  --bg: #f2f3f5;
+  --bg-light: #f2f3f5;
 }
 
 body {

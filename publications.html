@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <button class="theme-toggle" onclick="(function(){var b=document.body; b.classList.remove('dark'); if(b.classList.contains('theme-teal')){b.classList.remove('theme-teal'); b.classList.add('theme-grey');} else {b.classList.remove('theme-grey'); b.classList.add('theme-teal');}})()" aria-label="Cycle color theme">
+  <button class="theme-toggle" onclick="cycleColorTheme()" aria-label="Cycle color theme">
     <i class="fas fa-palette"></i>
   </button>
   <header class="site-header">
@@ -99,6 +99,17 @@
     <p>&copy; 2025 Parul Sharma</p>
   </footer>
   <script>
+    function cycleColorTheme() {
+      const body = document.body;
+      body.classList.remove('dark');
+      if (body.classList.contains('theme-teal')) {
+        body.classList.remove('theme-teal');
+        body.classList.add('theme-grey');
+      } else {
+        body.classList.remove('theme-grey');
+        body.classList.add('theme-teal');
+      }
+    }
     // Optional: Respect OS dark
     // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     //   document.body.classList.add('dark');

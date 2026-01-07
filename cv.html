@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <button class="theme-toggle" onclick="(function(){var b=document.body; b.classList.remove('dark'); if(b.classList.contains('theme-teal')){b.classList.remove('theme-teal'); b.classList.add('theme-grey');} else {b.classList.remove('theme-grey'); b.classList.add('theme-teal');}})()" aria-label="Cycle color theme">
+  <button class="theme-toggle" onclick="cycleColorTheme()" aria-label="Cycle color theme">
     <i class="fas fa-palette"></i>
   </button>
   <header class="site-header">
@@ -52,15 +52,18 @@
       <div class="timeline">
         <div class="card">
           <h3>PhD in Bioinformatics</h3>
-          <p>2018 to 2023 at Virginia Tech, Blacksburg, USA</p>
+          <p><strong>2018 – 2023</strong></p>
+          <p>Virginia Tech, Blacksburg, USA</p>
         </div>
         <div class="card">
           <h3>Masters in Computational Biology</h3>
-          <p>2015 to 2017 at IIIT-Delhi, Delhi, India</p>
+          <p><strong>2015 – 2017</strong></p>
+          <p>IIIT-Delhi, Delhi, India</p>
         </div>
         <div class="card">
           <h3>B.Tech in Biotechnology</h3>
-          <p>2011 to 2015 at Jaypee Institute of Information Technology, Noida, India</p>
+          <p><strong>2011 – 2015</strong></p>
+          <p>Jaypee Institute of Information Technology, Noida, India</p>
         </div>
       </div>
     </section>
@@ -69,33 +72,44 @@
       <div class="timeline">
         <div class="card">
           <h3>Assistant Bioinformatics Scientist</h3>
-          <p>Sept, 2023 onwards at Emory University, Atlanta, USA</p>
-          <p>Research focus: Detecting the spread of antimicrobial resistant strains in infectious diseases.<br>Advisor: Timothy Read</p>
+          <p><strong>Sept 2023 – Present</strong></p>
+          <p>Emory University, Atlanta, USA</p>
+          <p><em>Research focus:</em> Detecting the spread of antimicrobial resistant strains in infectious diseases.</p>
+          <p><em>Advisor:</em> Timothy Read</p>
         </div>
         <div class="card">
           <h3>Research Intern</h3>
-          <p>May, 2022 to Aug, 2022 at Vertex Pharmaceuticals, Boston, USA</p>
-          <p>Research focus: Validating and benchmarking clinical pipeline for gene-editing-based disease therapies.<br>Advisor: Rebecca Fine</p>
+          <p><strong>May 2022 – Aug 2022</strong></p>
+          <p>Vertex Pharmaceuticals, Boston, USA</p>
+          <p><em>Research focus:</em> Validating and benchmarking clinical pipeline for gene-editing-based disease therapies.</p>
+          <p><em>Advisor:</em> Rebecca Fine</p>
         </div>
         <div class="card">
           <h3>Graduate Research Assistant</h3>
-          <p>Aug, 2017 to Dec, 2017 at Indraprastha Institute of Information Technology, Delhi, India</p>
-          <p>Research focus: Post-mitochondrial apoptotic pathway study using Monte Carlo models.<br>Advisor: Subhadip Raychaudhuri</p>
+          <p><strong>Aug 2017 – Dec 2017</strong></p>
+          <p>Indraprastha Institute of Information Technology, Delhi, India</p>
+          <p><em>Research focus:</em> Post-mitochondrial apoptotic pathway study using Monte Carlo models.</p>
+          <p><em>Advisor:</em> Subhadip Raychaudhuri</p>
         </div>
         <div class="card">
           <h3>Research Intern</h3>
-          <p>May, 2017 to Dec, 2017 at Institute of Genomics and Integrative Biology, Delhi, India</p>
-          <p>Research focus: Clinical genomics and personalized medicine initiatives for Arabian countries.<br>Advisor: Vinod Scaria</p>
+          <p><strong>May 2017 – Dec 2017</strong></p>
+          <p>Institute of Genomics and Integrative Biology, Delhi, India</p>
+          <p><em>Research focus:</em> Clinical genomics and personalized medicine initiatives for Arabian countries.</p>
+          <p><em>Advisor:</em> Vinod Scaria</p>
         </div>
         <div class="card">
           <h3>Research Intern</h3>
-          <p>May, 2014 to Aug, 2014 at Centre for Genetic Manipulation of Crop Plants, Delhi, India</p>
-          <p>Research focus: Analyzing the protein content in different Brassica species for improving the quality of mustard seeds.<br>Advisor: Yaspal Singh Sodhi</p>
+          <p><strong>May 2014 – Aug 2014</strong></p>
+          <p>Centre for Genetic Manipulation of Crop Plants, Delhi, India</p>
+          <p><em>Research focus:</em> Analyzing the protein content in different Brassica species for improving the quality of mustard seeds.</p>
+          <p><em>Advisor:</em> Yaspal Singh Sodhi</p>
         </div>
         <div class="card">
           <h3>Intern</h3>
-          <p>Dec, 2013 to Jan, 2014 at Rajiv Gandhi Cancer Hospital and Research Center, Delhi, India</p>
-          <p>Research focus: Learning to perform pathological testing in Biochemistry, Microbiology and Hematology departments.</p>
+          <p><strong>Dec 2013 – Jan 2014</strong></p>
+          <p>Rajiv Gandhi Cancer Hospital and Research Center, Delhi, India</p>
+          <p><em>Research focus:</em> Learning to perform pathological testing in Biochemistry, Microbiology and Hematology departments.</p>
         </div>
       </div>
     </section>
@@ -105,6 +119,17 @@
     <p>&copy; 2025 Parul Sharma</p>
   </footer>
   <script>
+    function cycleColorTheme() {
+      const body = document.body;
+      body.classList.remove('dark');
+      if (body.classList.contains('theme-teal')) {
+        body.classList.remove('theme-teal');
+        body.classList.add('theme-grey');
+      } else {
+        body.classList.remove('theme-grey');
+        body.classList.add('theme-teal');
+      }
+    }
     // Optional: Respect OS dark
     // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     //   document.body.classList.add('dark');
