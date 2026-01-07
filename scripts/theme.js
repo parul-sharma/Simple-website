@@ -1,24 +1,45 @@
 // Shared theme + helpers used across pages
 (function(){
-  function ensureLightThemeInit(){
-    if (!document.body.classList.contains('theme-teal') && !document.body.classList.contains('theme-grey')) {
-      document.body.classList.add('theme-teal');
+  function applyPalette(palette){
+    const b = document.body;
+    b.classList.remove('theme-teal','theme-grey');
+    if (palette !== 'theme-teal' && palette !== 'theme-grey') palette = 'theme-teal';
+    b.classList.add(palette);
+    localStorage.setItem('palette', palette);
+  }
+
+  function applyDarkMode(isDark){
+    const b = document.body;
+    if (isDark) b.classList.add('dark'); else b.classList.remove('dark');
+    localStorage.setItem('prefers-dark', isDark ? '1' : '0');
+    const btn = document.getElementById('mode-toggle');
+    if (btn){
+      const icon = btn.querySelector('i');
+      if (icon){
+        icon.classList.remove('fa-moon','fa-sun');
+        icon.classList.add(isDark ? 'fa-sun' : 'fa-moon');
+      }
+      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.title = isDark ? 'Light mode' : 'Dark mode';
     }
-    document.body.classList.remove('dark');
+  }
+
+  function ensureThemeInit(){
+    const savedPalette = localStorage.getItem('palette') || 'theme-teal';
+    applyPalette(savedPalette);
+    const savedDark = localStorage.getItem('prefers-dark') === '1';
+    applyDarkMode(savedDark);
   }
 
   window.cycleColorTheme = function(){
     const b = document.body;
-    b.classList.remove('dark');
-    if (!b.classList.contains('theme-teal') && !b.classList.contains('theme-grey')) {
-      b.classList.add('theme-teal');
-    } else if (b.classList.contains('theme-teal')) {
-      b.classList.remove('theme-teal');
-      b.classList.add('theme-grey');
-    } else {
-      b.classList.remove('theme-grey');
-      b.classList.add('theme-teal');
-    }
+    const next = b.classList.contains('theme-teal') ? 'theme-grey' : 'theme-teal';
+    applyPalette(next);
+  };
+
+  window.toggleDarkMode = function(){
+    const nowDark = !document.body.classList.contains('dark');
+    applyDarkMode(nowDark);
   };
 
   window.scrollToTop = function(e){
@@ -26,5 +47,5 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  document.addEventListener('DOMContentLoaded', ensureLightThemeInit);
+  document.addEventListener('DOMContentLoaded', ensureThemeInit);
 })();

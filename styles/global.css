@@ -1,66 +1,78 @@
 :root {
-  /* Light mode - warm, professional palette */
-  --text-light: #1a1a1a;
-  --text-dark: #e8e8e8;
-  --bg-light: #f5f5f0;
-  --bg-dark: #0a0a0a;
-  --accent-light: #2c5f8d;
-  --accent-dark: #6ba3d4;
-  --accent-hover: #3e78a3; /* lighter accent on hover (light mode) */
-  --secondary-light: #6b7280;
-  --secondary-dark: #9ca3af;
-  --border-light: #e5e7eb;
-  --border-dark: #27272a;
+  /* Light mode — Teal Scientific */
+  --text-light: #1A1A1A;
+  --text-dark: #E7E9EC;
+  --bg-light: #F7F7F2;
+  --bg-dark: #0B0F14;
+  --accent-light: #2C5F8D;
+  --accent-dark: #8DBCE3;
+  --accent-hover: #3E78A3; /* hover in light mode */
+  --secondary-light: #6B7280;
+  --secondary-dark: #9CA3AF;
+  --border-light: #E5E7EB;
+  --border-dark: #22262B;
   --sidebar-width: 280px;   /* single source of truth */
   --sidebar-gap: 80px;      /* space between sidebar and content */
   
   /* Main color tokens (light mode defaults) */
-  --bg: #f5f5f0;
-  --text: #1a1a1a;
-  --muted: #6b7280;
-  --accent: #2c5f8d;
-  --card-bg: #ffffff;
-  --border: #e5e7eb;
+  --bg: #F7F7F2;
+  --text: #1A1A1A;
+  --muted: #6B7280;
+  --accent: #2C5F8D;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
 }
 
 /* Dark mode token overrides */
 body.dark {
-  --text-light: #e8e8e8;
-  --text-dark: #1a1a1a;
-  --bg-light: #0a0a0a;
-  --bg-dark: #f5f5f0;
-  --accent-light: #6ba3d4;
-  --accent-dark: #2c5f8d;
-  --accent-hover: #8dbce3; /* lighter accent on hover (dark mode) */
-  --secondary-light: #9ca3af;
-  --secondary-dark: #6b7280;
-  --border-light: #27272a;
-  --border-dark: #e5e7eb;
+  --text-light: #E7E9EC;
+  --text-dark: #1A1A1A;
+  --bg-light: #0B0F14;
+  --bg-dark: #F7F7F2;
+  --accent-light: #8DBCE3;
+  --accent-dark: #2C5F8D;
+  --accent-hover: #A5CCEA; /* hover in dark mode */
+  --secondary-light: #9CA3AF;
+  --secondary-dark: #6B7280;
+  --border-light: #22262B;
+  --border-dark: #E5E7EB;
   
   /* Main color tokens (dark mode) */
-  --bg: #0a0a0a;
-  --text: #e8e8e8;
-  --muted: #9ca3af;
-  --accent: #6ba3d4;
-  --card-bg: #111113;
-  --border: #27272a;
+  --bg: #0B0F14;
+  --text: #E7E9EC;
+  --muted: #9CA3AF;
+  --accent: #8DBCE3;
+  --card-bg: #121417;
+  --border: #22262B;
 }
 
 /* Pleasant alternate color themes */
-body.theme-teal {
-  --bg: #f0f9f8;
-  --bg-light: #f0f9f8;
-  --card-bg: #e5f2f0; /* Muted teal shade for cards */
-  --border: #d0e5e0;
-  --border-light: #d0e5e0;
+/* Palette variants */
+/* Palette variants (apply base surfaces only in light mode) */
+body:not(.dark).theme-teal {
+  --bg: #F7F7F2;
+  --bg-light: #F7F7F2;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --border-light: #E5E7EB;
+  --accent: #2C5F8D;
+  --accent-hover: #3E78A3;
 }
 
-body.theme-grey {
-  --bg: #f2f3f5;
-  --bg-light: #f2f3f5;
-  --card-bg: #e6e7eb; /* Darker grey shade for cards */
-  --border: #d5d6df;
-  --border-light: #d5d6df;
+body:not(.dark).theme-grey {
+  --bg: #F2F3F5;
+  --bg-light: #F2F3F5;
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --border-light: #E5E7EB;
+  --accent: #4B5563;      /* Slate accent for light */
+  --accent-hover: #64748B;
+}
+
+/* Grey palette accents for dark mode */
+body.dark.theme-grey {
+  --accent: #9AA4B2;
+  --accent-hover: #B4BDCA;
 }
 
 body {
@@ -161,8 +173,8 @@ footer {
   height: 100vh;
   width: var(--sidebar-width);
   padding: 2rem 1.25rem;
-  background: var(--bg-light);
-  border-right: 1px solid var(--border-light);
+  background: var(--bg);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -180,11 +192,10 @@ footer {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--border-light);
+  border: 3px solid var(--border);
   margin-bottom: 0.5rem;
   align-self: center; /* center photo in the sidebar */
 }
-body.dark .sidebar .profile-image { border-color: var(--border-dark); }
 
 .sidebar .name { font-size: 1.4rem; font-weight: 700; }
 .sidebar .role { color: var(--secondary-light); font-size: 0.95rem; margin-top: -0.25rem; }
@@ -227,11 +238,10 @@ body.dark .sidebar-nav a { color: var(--accent-dark); }
   justify-content: space-evenly; /* evenly spread */
   gap: 0.5rem;
   padding: 0.75rem 0 calc(1rem + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--border-light);
-  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
   width: 100%;
 }
-body.dark .sidebar .social-links { background: var(--bg-dark); border-top-color: var(--border-dark); }
 .sidebar .social-links a {
   color: var(--text);
   opacity: 0.8;
@@ -387,6 +397,21 @@ body.dark .research-card:hover {
   padding: 0.5rem;
 }
 .theme-toggle:hover { opacity: 0.8; }
+
+/* Dark mode toggle next to theme palette */
+.mode-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 4.25rem; /* sits left of the palette button */
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text);
+  z-index: 1000;
+  padding: 0.5rem;
+}
+.mode-toggle:hover { opacity: 0.8; }
 
 /* Utility classes to mimic desired layout styles */
 .text-5xl { font-size: 2.5rem; line-height: 1.2; }
