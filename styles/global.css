@@ -249,10 +249,12 @@ body.dark .sidebar-nav a { color: var(--accent-dark); }
 }
 .sidebar .social-links a:hover { opacity: 1; }
 
+/* Hide old headers globally */
+.site-header, .header { display: none; }
+
 /* Content shift when sidebar present */
 @media (min-width: 769px) {
   .with-sidebar { margin-left: calc(var(--sidebar-width) + var(--sidebar-gap)); }
-  .site-header, .header { display: none; }
   /* Balance right whitespace to match sidebar gap on the left */
   .container.with-sidebar { padding-right: calc(2.5rem + var(--sidebar-gap)); }
 }
