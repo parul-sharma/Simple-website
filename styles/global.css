@@ -21,6 +21,8 @@
   --accent: #2C5F8D;
   --card-bg: #FFFFFF;
   --border: #E5E7EB;
+  --success: #10b981;        /* Success/confirmation color */
+  --focus-shadow: rgba(44, 95, 141, 0.1);  /* Light mode focus shadow */
 }
 
 /* Dark mode token overrides */
@@ -44,6 +46,8 @@ body.dark {
   --accent: #8DBCE3;
   --card-bg: #121417;
   --border: #22262B;
+  --success: #10b981;        /* Success color (same in both modes) */
+  --focus-shadow: rgba(141, 188, 227, 0.1);  /* Dark mode focus shadow */
 }
 
 /* Pleasant alternate color themes */
@@ -777,13 +781,7 @@ body.dark .news-date { color: var(--secondary-dark); }
 .form-group select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(44, 95, 141, 0.1);
-}
-
-body.dark .form-group input:focus,
-body.dark .form-group textarea:focus,
-body.dark .form-group select:focus {
-  box-shadow: 0 0 0 3px rgba(141, 188, 227, 0.1);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
 }
 
 .form-group textarea {
@@ -839,7 +837,7 @@ body.dark .form-group select:focus {
 
 .feedback-success i {
   font-size: 3rem;
-  color: #10b981;
+  color: var(--success);
   margin-bottom: 1rem;
 }
 
